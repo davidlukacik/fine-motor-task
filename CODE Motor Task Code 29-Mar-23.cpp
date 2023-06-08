@@ -26,19 +26,23 @@ void loop() {
     byte incomingByte = Serial.read();
     // if the incoming byte is 't', start a trial immediately
     if (incomingByte == 't') {
+      Serial.print("Trial started at: ");
+      Serial.println(currentTime);
       digitalWrite(ledPin, HIGH);  // turn on the LED
-      myStepper.setSpeed(50);  // set the speed of the stepper motor
+      myStepper.setSpeed(25);  // set the speed of the stepper motor
       myStepper.step(30);  // move the stepper motor 30 degrees
       previousTime = currentTime;
       delay(500);  // wait for half a second
     }
   }
 
-  // if the IR Phototransistor is tripped and either 30 seconds have passed since the last activation
+  // if the IR Phototransistor is blocked and either 30 seconds have passed since the last activation
   // or a trial has been triggered by a serial input, turn on the LED and move the stepper motor 30 degrees
-  if (irState == HIGH && (currentTime - previousTime > bufferTime || Serial.available() > 0)) {
+  if (irState == LOW && (currentTime - previousTime > bufferTime || Serial.available() > 0)) {
+    Serial.print("Trial started at: ");
+    Serial.println(currentTime);
     digitalWrite(ledPin, HIGH);  // turn on the LED
-    myStepper.setSpeed(50);  // set the speed of the stepper motor
+    myStepper.setSpeed(25);  // set the speed of the stepper motor
     myStepper.step(30);  // move the stepper motor 30 degrees
     previousTime = currentTime;
     delay(500);  // wait for half a second
