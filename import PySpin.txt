@@ -17,6 +17,12 @@ def main():
 
         # Initialize the camera
         cam.Init()
+        
+        node_map = cam.GetNodeMap()
+        output_file_node = PySpin.CStringPtr(node_map.GetNode("OutputFile"))
+        if PySpin.IsAvailable(output_file_node) and PySpin.IsWritable(output_file_node):
+        output_file_node.SetValue("C:\Users\verpeutlab\Videos\pyspintest\video.avi")
+
 
         # Set the frame rate to 120 FPS
         node_map = cam.GetNodeMap()
