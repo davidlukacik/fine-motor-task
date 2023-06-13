@@ -1,0 +1,42 @@
+import PySpin
+import time
+
+def main():
+    # Initialize PySpin system
+    system = PySpin.System.GetInstance()
+    # Get the camera list
+    cam_list = system.GetCameras()
+
+    try:
+        # Check if any cameras are connected
+        if cam_list.GetSize() == 0:
+            raise Exception("No cameras found.")
+
+        # Select the first camera
+        cam = cam_list[0]
+
+        # Initialize the camera
+        cam.Init()
+
+        # Set the frame rate to 120 FPS
+        node_map = cam.GetNodeMap()
+        fps_node = PySpin.CFloatPtr(node_map.GetNode("AcquisitionFrameRate"))
+        if PySpin.IsAvailable(fps_node) and PySpin.IsWritable(fps_node):
+            fps_node.SetValue(120)
+
+        # Start recording for 30 seconds
+        cam.BeginAcquisition()
+        time.sleep(30)
+        cam.EndAcquisition()
+
+        # Deinitialize the camera
+        cam.DeInit()
+
+    finally:
+        # Release the camera resources
+        cam_list.Clear()
+        # Release the PySpin system
+        system.ReleaseInstance()
+
+if __name__ == '__main__':
+    main()
