@@ -35,6 +35,7 @@ def main():
     finally:
         # Release the camera resources
         cam_list.Clear()
+        cam = None
         # Release the PySpin system
         system.ReleaseInstance()
 
