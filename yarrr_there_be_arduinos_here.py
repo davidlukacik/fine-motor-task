@@ -11,23 +11,23 @@ from PySpin import PySpin
 import subprocess
 import serial
 
-# Set the save location for the videos
+# Set the save location for the videos (Edit this to correspond with where you want the videos saved!)
 save_folder = "C:/Users/verpeutlab/Videos/pyspintest"
 
-# Set the desired frames per second
+# Set the desired frames per second (This would be 120 in an ideal world, but Spinnaker is stubborn)
 fps = 32
 
 # Set the recording duration in seconds
 recording_duration = 30
 
-# Set the serial port and baud rate
+# Set the serial port and baud rate. Be sure to double check the serial port the Arduino is plugged into!
 serial_port = "COM3"
 baud_rate = 9600
 
 # Initialize serial communication
 ser = serial.Serial(serial_port, baud_rate)
 
-# Wait for the "cr" signal from Arduino to start the recording
+# Wait for the "cr" signal from Arduino to start the recording. This may be slightly redundant, at least the corresponding code in the Arduino program. 
 while ser.read(2) != b"cr":
     pass
 
@@ -94,7 +94,7 @@ system.ReleaseInstance()
 # Release the video writer
 video_writer.release()
 
-# Launch the video window using subprocess
+# Launch the video window using subprocess 
 video_window = subprocess.Popen(["ffplay", "-i", video_name])
 
 # Wait for the video window to close
