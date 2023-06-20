@@ -63,4 +63,10 @@ void loop() {
     delay(100);  // wait for the camera to initialize
     Serial.write("r");  // send 'r' to start recording
     delay(30000);  // wait for 30 seconds
-    Serial
+    Serial.write("s");  // send 's' to stop recording
+
+    // Wait for 1 second before turning off the LED
+    delay(1000);
+    digitalWrite(ledPin, LOW); // turn off the LED
+  }
+}
