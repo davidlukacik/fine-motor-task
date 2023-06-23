@@ -1,9 +1,0 @@
-﻿Name,Quantity,Component
-"UArduino",1," Arduino Uno R3"
-"QIR Phototransistor",1," Ambient Light Sensor [Phototransistor]"
-"DIR Diode",1,"Red LED"
-"R2, R1",2,"250 Ω Resistor"
-"R3",1,"100 kΩ Resistor"
-"DHouse Light",1,"White LED"
-"MFeeder Stepper",1,"32 DC Motor with encoder"
-"UMotor Driver",1," H-bridge Motor Driver"
