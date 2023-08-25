@@ -36,14 +36,15 @@ void loop() {
 
       // activate the camera for 30 seconds
       Serial.write("c");  // send 'c' to trigger the camera
-      delay(100);  // wait for the camera to initialize
+      delay(50);  // wait for the camera to initialize
       Serial.write("r");  // send 'r' to start recording
-      delay(30000);  // wait for 30 seconds
-      Serial.write("s");  // send 's' to stop recording
 
       // Wait for 1 second before turning off the LED
       delay(1000);
       digitalWrite(ledPin, LOW); // turn off the LED
+
+      delay(30000);  // wait for 30 seconds
+      Serial.write("s");  // send 's' to stop recording
     }
   }
 
@@ -60,13 +61,16 @@ void loop() {
 
     // activate the camera for 30 seconds
     Serial.write("c");  // send 'c' to trigger the camera
-    delay(100);  // wait for the camera to initialize
+    delay(50);  // wait for the camera to initialize
     Serial.write("r");  // send 'r' to start recording
-    delay(30000);  // wait for 30 seconds
-    Serial.write("s");  // send 's' to stop recording
-
+   
     // Wait for 1 second before turning off the LED
     delay(1000);
     digitalWrite(ledPin, LOW); // turn off the LED
+
+    delay(30000);  // wait for 30 seconds
+    Serial.write("s");  // send 's' to stop recording
+
+
   }
 }
