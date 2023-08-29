@@ -59,9 +59,8 @@ void loop() {
     delay(1000);
     digitalWrite(ledPin, LOW); // turn off the LED
 
-    // Reset the flag and set the next trial start time
+    // Reset the flag
     startTrial = false;
-    trialStartTime = currentTime + trialInterval;
   }
 
   // You can add other code here to handle the IR Phototransistor if needed.
