@@ -17,6 +17,7 @@ void setup() {
   pinMode(ledPin, OUTPUT);  // initialize the LED pin as an output
   pinMode(irPin, INPUT);   // initialize the IR Phototransistor pin as an input
   Serial.begin(9600);      // initialize serial communication at 9600 bits per second
+  trialStartTime = millis() + trialInterval; // Initialize the first trial start time
 }
 
 void loop() {
@@ -25,9 +26,9 @@ void loop() {
   int irState = digitalRead(irPin);
 
   // Check if it's time to start a new trial
-  if (currentTime - trialStartTime >= trialInterval) {
+  if (currentTime >= trialStartTime) {
     startTrial = true;
-    trialStartTime = currentTime + trialDelay;  // Set the next trial start time
+    trialStartTime = currentTime + trialInterval;  // Set the next trial start time
   }
 
   // check if there is any incoming serial data
